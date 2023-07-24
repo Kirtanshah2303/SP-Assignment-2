@@ -1,16 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
-display_chessboard() {
-    for ((row=0; row<8; row++)); do
-        for ((col=0; col<8; col++)); do
-            if (( (row + col) % 2 == 0 )); then
-                echo -n "\033[47m " # white
-            else
-                echo -n "\033[40m " # black
-            fi
-        done
-        echo   # Move to the next row
-    done
-}
-
-display_chessboard
+for i in $(seq 1 8)
+do
+	for j in $(seq 1 8)
+	do
+		S=$(((i+j)%2))
+		if [ $S -eq 0 ]
+		then
+			echo -n "\033[47m " # white
+		else
+			echo -n "\033[40m " # black
+		fi
+	done
+	echo -n "\033[40m" # black, ensure it exists normally
+	echo "" # new line
+done
