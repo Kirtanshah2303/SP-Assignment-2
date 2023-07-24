@@ -7,11 +7,11 @@ do
 		S=$(((i+j)%2))
 		if [ $S -eq 0 ]
 		then
-			echo -n "\033[47m " # white
+			echo -n "■ "
 		else
-			echo -n "\033[40m " # black
+			echo -n "□ "
 		fi
 	done
-	echo -n "\033[40m" # black, ensure it exists normally
+	echo
 	echo "" # new line
 done
