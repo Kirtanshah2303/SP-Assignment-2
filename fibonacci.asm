@@ -15,13 +15,13 @@ loop_start:
     dec dword [n]   ; Decrement the value of n
     jnz loop_start  ; Continue the loop if n is not zero
 
-    mov r10, rbx
-    mov rdi, result_msg  
-    mov rsi, n           
-    mov rdx, r10        
-    call printf
+    ; Print the result directly without using printf
+    mov rsi, n
+    mov rdi, result_msg
+    mov rax, 0x1     ; System call number for write
+    mov rdx, 26      ; Length of the message (adjust if needed)
+    syscall
 
-    mov rbx, r10
-
-    xor edi, edi         ; System call number for exit
+    ; Exit the program
+    xor edi, edi     ; System call number for exit
     call exit
