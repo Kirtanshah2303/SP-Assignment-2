@@ -7,9 +7,9 @@ do
 		S=$(((i+j)%2))
 		if [ $S -eq 0 ]
 		then
-			echo -n "■ "
+			echo -n "0 "
 		else
-			echo -n "□ "
+			echo -n "1 "
 		fi
 	done
 	echo
