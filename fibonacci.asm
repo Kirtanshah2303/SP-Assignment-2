@@ -3,9 +3,9 @@ section .data
     n equ 10          ; Replace 10 with the desired value of n
 
 section .text
-    global _start
+    global main
 
-_start:
+main:
     mov eax, 0   ; fib[0] = 0
     mov ebx, 1   ; fib[1] = 1
     mov ecx, 2   ; Start the loop from index 2
@@ -13,17 +13,9 @@ _start:
 loop_start:
     add eax, ebx
     xchg eax, ebx
-    dec dword [n]   ; Decrement the value of n
-    jnz loop_start  ; Continue the loop if n is not zero
-
-    ; Print the result directly without using printf
-    mov rax, 0x4     ; System call number for sys_write
-    mov rdi, 0x1     ; File descriptor 1 (stdout)
-    mov rsi, result_msg
-    mov rdx, 26      ; Length of the message (adjust if needed)
-    syscall
-
-    ; Exit the program
-    xor edi, edi     ; System call number for sys_exit
-    mov eax, 0x60    ; Exit code 0
-    syscall
+    inc ecx
+    cmp ecx, dword[n]
+    jnz loop_start  ; Continue the loop if n is not zerio
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80
