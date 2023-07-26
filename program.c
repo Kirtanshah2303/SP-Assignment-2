@@ -79,6 +79,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("Last %d lines are..\n", &n);
+    printf("Last %d lines are..\n", n);
     printLastLines(head, n);
 }
